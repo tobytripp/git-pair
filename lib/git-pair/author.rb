@@ -23,8 +23,7 @@ module GitPair
       if authors.length == 1
         authors.first.email
       else
-        initials_string = '+' + authors.map { |a| a.initials }.join('+')
-        Config.default_email.sub("@", "#{initials_string}@")
+        Config.default_email
       end
     end
 

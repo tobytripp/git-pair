@@ -9,14 +9,14 @@ Feature: Switching authors
 
   Scenario: Pairing with a single author
     Given I have added the author "Linus Torvalds <linus@example.org>"
-    When I switch to the pair "LT"
-    Then `git pair` should display "Linus Torvalds" for the current author
-    And `git pair` should display "linus@example.org" for the current email
+     When I switch to the pair "LT"
+     Then `git pair` should display "Linus Torvalds" for the current author
+      And `git pair` should display "linus@example.org" for the current email
 
   Scenario: Pairing with two authors
     Given I have added the author "Linus Torvalds <linus@example.org>"
-    And I have added the author "Junio C Hamano <junio@example.org>"
-    And my global Git configuration is setup with email "devs@example.com"
-    When I switch to the pair "LT JCH"
-    Then `git pair` should display "Junio C Hamano + Linus Torvalds" for the current author
-    And `git pair` should display "devs+jch+lt@example.com" for the current email
+      And I have added the author "Junio C Hamano <junio@example.org>"
+      And my global Git configuration is setup with email "devs@example.com"
+     When I switch to the pair "LT JCH"
+     Then `git pair` should display "Junio C Hamano + Linus Torvalds" for the current author
+      And `git pair` should display "devs@example.com" for the current email

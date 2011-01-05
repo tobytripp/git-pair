@@ -1,4 +1,4 @@
-
+Feature: Resetting the current authors
   Scenario: resetting the current authors
     Given I have added the author "Linus Torvalds <linus@example.org>"
     And my global Git configuration is setup with user "Global User"

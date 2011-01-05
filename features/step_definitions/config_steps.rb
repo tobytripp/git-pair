@@ -78,7 +78,7 @@ Then /^`git pair` should display an empty author list$/ do
   assert authors_list_from_output(output).empty?
 end
 
-Then /^the last command's output should include "([^\"]*)"$/ do |output|
+Then /^the last command\'s output should include "([^\"]*)"$/ do |output|
   assert @output.include?(output)
 end
 
@@ -93,11 +93,11 @@ def authors_list_from_output(output)
 end
 
 def current_author_from_output(output)
-  output =~ /Current author: (.*?)\n/im
+  output.gsub(/\e\[\d\d?m/, '') =~ /Current author: (.*)/i
   $1.strip
 end
 
 def current_email_from_output(output)
-  output =~ /Current email: (.*?)\n/im
+  output.gsub(/\e\[\d\d?m/, '') =~ /Current email: (.*)/i
   $1.strip
 end
