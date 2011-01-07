@@ -3,18 +3,18 @@ module GitPair
     extend self
 
     def all_author_strings
-      `git config --global --get-all git-pair.authors`.split("\n")
+      `git config --get-all git-pair.authors`.split("\n")
     end
 
     def add_author(author)
       unless Author.exists?(author)
-        `git config --global --add git-pair.authors "#{author.name} <#{author.email}>"`
+        `git config --add git-pair.authors "#{author.name} <#{author.email}>"`
       end
     end
 
     def remove_author(name)
-      `git config --global --unset-all git-pair.authors "^#{name} <"`
-      `git config --global --remove-section git-pair` if all_author_strings.empty?
+      `git config --unset-all git-pair.authors "^#{name} <"`
+      `git config --remove-section git-pair` if all_author_strings.empty?
     end
 
     def switch(authors)
