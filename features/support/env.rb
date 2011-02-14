@@ -1,7 +1,5 @@
 require 'tmpdir'
-require 'test/unit/assertions'
-World(Test::Unit::Assertions)
-
+require 'rspec'
 
 module RepositoryHelper
   # TODO: use 1.8.7's Dir.mktmpdir?
@@ -36,7 +34,6 @@ module RepositoryHelper
 end
 
 World(RepositoryHelper)
-
 
 Before do
   backup_gitconfigs

@@ -9,19 +9,19 @@ Feature: Adding an author
 
   Scenario: adding the same name and email twice
     When I add the author "Linus Torvalds <linus@example.org>"
-    And I add the author "Linus Torvalds <linus@example.org>"
+     And I add the author "Linus Torvalds <linus@example.org>"
     Then `git pair` should display "Linus Torvalds" in its author list only once
-    And the gitconfig should include "Linus Torvalds" in its author list only once
+     And the gitconfig should include "Linus Torvalds" in its author list only once
 
   Scenario: adding the same name twice with different emails
     When I add the author "Linus Torvalds <linus@example.org>"
-    And I add the author "Linus Torvalds <linus@example.com>"
+     And I add the author "Linus Torvalds <linus@example.com>"
     Then `git pair` should display "Linus Torvalds" in its author list only once
-    And the gitconfig should include "Linus Torvalds" in its author list only once
-    And the gitconfig should include "linus@example.org" as the email of "Linus Torvalds"
+     And the gitconfig should include "Linus Torvalds" in its author list only once
+     And the gitconfig should include "linus@example.org" as the email of "Linus Torvalds"
 
   Scenario: adding a malformed author string
     When I add the author " "
-    And  I add the author "Bob Dole"
-    And  I add the author "Jimmy <asdf"
+     And I add the author "Bob Dole"
+     And I add the author "Jimmy <asdf"
     Then the config file should have no authors

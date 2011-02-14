@@ -22,20 +22,20 @@ When /^I (?:try to )?switch to the pair "([^\"]*)"$/ do |abbreviations|
   @output = git_pair abbreviations
 end
 
-When /^I reset the current authors$/ do 
+When /^I reset the current authors$/ do
   git_pair '--reset'
 end
 
 Then /^`git pair` should display "([^\"]*)" in its author list$/ do |name|
   output = git_pair
   authors = authors_list_from_output(output)
-  assert authors.include?(name)
+  authors.should include( name )
 end
 
 Then /^`git pair` should display "([^\"]*)" in its author list only once$/ do |name|
   output = git_pair
   authors = authors_list_from_output(output)
-  assert_equal 1, authors.select { |author| author == name}.size
+  authors.select { |author| author == name}.size.should == 1
 end
 
 Then /^`git pair` should display no authors$/ do
@@ -47,24 +47,24 @@ end
 
 Then /^`git pair` should display "([^\"]*)" for the current author$/ do |names|
   output = git_pair
-  assert_equal names, current_author_from_output(output)
+  current_author_from_output(output).should == names
 end
 
 Then /^`git pair` should display "([^\"]*)" for the current email$/ do |email|
   output = git_pair
-  assert_equal email, current_email_from_output(output)
+  current_email_from_output(output).should == email
 end
 
 Then /^the gitconfig should include "([^\"]*)" in its author list only once$/ do |name|
   output = git_config
   authors = output.split("\n").map { |line| line =~ /^git-pair\.authors=(.*) <[^>]+>$/; $1 }.compact
-  assert_equal 1, authors.select { |author| author == name}.size
+  authors.select { |author| author == name}.size.should == 1
 end
 
 Then /^the gitconfig should include "([^\"]*)" as the email of "([^\"]*)"$/ do |email, name|
   output = git_config
   authors = output.split("\n").map { |line| line =~ /^git-pair\.authors=.* <([^>]+)>$/; $1 }.compact
-  assert_equal 1, authors.select { |author| author == email}.size
+  authors.select { |author| author == email}.size.should == 1
 end
 
 Then /^`git pair` should display the following author list:$/ do |table|
@@ -75,11 +75,11 @@ end
 
 Then /^`git pair` should display an empty author list$/ do
   output = git_pair
-  assert authors_list_from_output(output).empty?
+  authors_list_from_output(output).should be_empty
 end
 
 Then /^the last command\'s output should include "([^\"]*)"$/ do |output|
-  assert @output.include?(output)
+  @output.should include(output)
 end
 
 Then /^the config file should have no authors$/ do
