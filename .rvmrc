@@ -1,0 +1,4 @@
+rvm --create use 1.9.2@git-pair
+
+[[ -s "git-pair.gems" ]] && rvm gemset import git-pair.gems
+bundle install
