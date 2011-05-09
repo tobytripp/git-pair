@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 Gem::Specification.new do |s|
   s.name        = %q{tobytripp-git-pair}
@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.summary     = %q{Configure git to commit as more than one author}
   s.description = %q{A git porcelain for pair programming. Changes git-config's user.name and user.email settings so you can commit as more than one author.} #'
 
-  s.default_executable = %q{git-pair}
   s.executables        = ["git-pair"]
 
   s.rdoc_options       = ["--charset=UTF-8"]

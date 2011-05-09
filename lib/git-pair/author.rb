@@ -1,10 +1,9 @@
 module GitPair
   class Author
-
     ValidAuthorStringRegex = /^\s*([^<]+)<([^>]+)>\s*$/
 
     class InvalidAuthorString < TypeError; end
-    
+
     def self.all
       Config.all_author_strings.map { |string| new(string) }
     end
@@ -15,7 +14,7 @@ module GitPair
     end
 
     def self.find(abbr)
-      all.find { |author| author.match?(abbr) } || 
+      all.find { |author| author.match?(abbr) } ||
         raise(NoMatchingAuthorsError, "no authors matched #{abbr}")
     end
 
