@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = %q{tobytripp-git-pair}
-  s.version     = "1.1.0"
+  s.version     = "1.1.1"
   s.platform    = Gem::Platform::RUBY
 
   s.authors     = ["Chris Kampmeier", "Adam McCrea", "Jon Distad", "Toby Tripp"]
